@@ -15,7 +15,7 @@ npm start -- help
 
 To convert units execute a command like the following: `npm start -- 100 km mi`. This will convert 100 kilometers to miles.
 
-The format is: Usage: `npm start -- <value> <unit-from> <unit-to>`
+The format is: `npm start -- <value> <unit-from> <unit-to>`
 
 # Developing
 
