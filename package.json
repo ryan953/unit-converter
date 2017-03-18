@@ -1,1 +1,25 @@
-{}
+{
+  "dependencies": {
+    "flow-annotation-check": "^1.1.2",
+    "flow-bin": "^0.42.0",
+    "flow-coverage-report": "^0.3.0",
+    "flow-remove-types": "^1.2.0"
+  },
+  "scripts": {
+    "start": "NODE_ENV=development ./index.js",
+    "flow:check": "echo \"[ignore]\n.*/node_modules/.*\n[options]\" > .flowconfig && flow check || echo",
+    "flow:all": "echo \"[ignore]\n.*/node_modules/.*\n[options]\nall=true\" > .flowconfig && flow check || echo",
+    "flow:files": "flow-annotation-check || echo",
+    "flow:coverage": "flow-coverage-report || echo"
+  },
+  "flow-coverage-report": {
+    "includeGlob": [
+      "index.js",
+      "src/**/*.js"
+    ],
+    "type": [
+      "text",
+      "html"
+    ]
+  }
+}
