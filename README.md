@@ -5,7 +5,7 @@ This repo is a tiny demo of code that could be improved with flow types.
 # Installing
 
 ```
-git clone git@github.com:ryan953/unit-converter.git
+git clone https://github.com/ryan953/unit-converter.git
 cd unit-converter
 npm install
 npm start -- help
