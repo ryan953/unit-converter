@@ -21,10 +21,4 @@ class Converter {
   }
 }
 
-if (process.env.NODE_ENV == 'development') {
-  Converter.prototype.debug = function() {
-    return {from: this.from, to: this.to};
-  }
-}
-
 module.exports = Converter;

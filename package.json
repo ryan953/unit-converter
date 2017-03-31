@@ -7,10 +7,11 @@
   },
   "scripts": {
     "start": "NODE_ENV=development ./index.js",
-    "flow:check": "echo \"[ignore]\n.*/node_modules/.*\n[options]\" > .flowconfig && flow check || echo",
-    "flow:all": "echo \"[ignore]\n.*/node_modules/.*\n[options]\nall=true\" > .flowconfig && flow check || echo",
-    "flow:files": "flow-annotation-check || echo",
-    "flow:coverage": "flow-coverage-report || echo"
+    "flow:check": "echo \"[ignore]\n.*/node_modules/.*\n.*/flow-coverage/.*\n[options]\" > .flowconfig && time flow check || echo",
+    "flow:all": "echo \"[ignore]\n.*/node_modules/.*\n.*/flow-coverage/.*\n[options]\nall=true\" > .flowconfig && time flow check || echo",
+    "flow:files": "time flow-annotation-check -x \"node_modules/**/*.js\" -x \"flow-coverage/**/*.js\" || echo",
+    "flow:coverage": "time flow-coverage-report -t text || echo",
+    "flow:stop": "flow stop"
   },
   "flow-coverage-report": {
     "includeGlob": [

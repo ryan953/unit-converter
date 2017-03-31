@@ -10,8 +10,10 @@ function convert(amount, from, to) {
 }
 
 function reverse(amount, from, to) {
-  const into = new Converter().init(from, to)
-  const back = new Converter().init(to, from);
+  console.log(`Converting ${amount} from '${from}' into '${to}' and then back again`);
+
+  const into = (new Converter()).init(from, to)
+  const back = (new Converter()).init(to, from);
 
   const destValue = into.convert(amount);
   const backValue = back.convert(destValue);
@@ -23,10 +25,17 @@ module.exports = {
   start(...args) {
     try {
       const action = this.getAction(args);
-      console.log(action());
+      console.log('The result is: ' + action());
+      console.log('');
+      console.log('\033[1;32m✔\033[0m UnitConverter will now exit');
     } catch (e) {
-      console.log(e);
+      console.error('');
+      console.error('UnitConverter caught an error:');
+      console.error(e);
+      console.error('');
+      console.error('\033[1;31m✘\033[0m UnitConverter will now exit');
     }
+    console.log('');
   },
 
   getAction(args) {
@@ -34,10 +43,18 @@ module.exports = {
       case 'help':
         return cli.printHelp;
       case 'reverse':
-        return () => reverse(args[1], args[2], args[3]);
+        return () => {
+          return reverse(
+            args[1],
+            args[2],
+            args[3]
+          );
+        };
       default:
         if (args.length == 3) {
-          return () => new Converter().init(args[1], args[2]).explain(args[0]);
+          return () => {
+            return (new Converter()).init(args[1], args[2]).explain(args[0]);
+          };
         }
     }
 
